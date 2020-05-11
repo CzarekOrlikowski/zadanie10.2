@@ -16,7 +16,7 @@ public class BankAccount {
     }
 
     public void withdraw(double amount) {
-        if (amount < balance) {
+        if (amount > balance) {
             throw new IllegalArgumentException("Zbyt duża kwota. Dostępne środki to: " + balance);
         } else {
             this.balance -= amount;
@@ -25,7 +25,7 @@ public class BankAccount {
 
     public String printInfo() {
         return "Dane rachunku" + "\n" +
-                "właścciel :" + person.getFirstName() + ", " + person.getLastName() + ", " + person.getPesel() + "\n" +
+                "właścciel:" + person.getFirstName() + ", " + person.getLastName() + ", " + person.getPesel() + "\n" +
                 "stan środków: " + balance + "\n";
     }
 }
