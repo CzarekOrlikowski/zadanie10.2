@@ -15,12 +15,17 @@ public class BankAccount {
         this.balance += amount;
     }
 
-    public void withdraw(double amount) {
+    public void withdraw(double amount) throws NoFundsException, NotAllowedTransactionException {
+        double transactionLimit = 1000;
         if (amount > balance) {
-            throw new IllegalArgumentException("Zbyt duża kwota. Dostępne środki to: " + balance);
+            throw new NoFundsException("Zbyt duża kwota. Dostępne środki to: " + balance);
+        }
+        if (amount > transactionLimit) {
+            throw new NotAllowedTransactionException("Maksymalna wypłata to 1000 zł");
         } else {
             this.balance -= amount;
         }
+
     }
 
     public String printInfo() {

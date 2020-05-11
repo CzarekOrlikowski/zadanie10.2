@@ -6,25 +6,29 @@ public class CashMachine {
 
         try {
             BankAccount account1 = new BankAccount(person1, 1000);
-            BankAccount account2 = new BankAccount(person2, 2000);
+            BankAccount account2 = new BankAccount(person2, 500);
             System.out.println(account1.printInfo());
             System.out.println(account2.printInfo());
 
-            account1.deposit(2000);
-            account2.deposit(1000);
+            account1.deposit(100);
+            account2.deposit(100);
             System.out.println(account1.printInfo());
             System.out.println(account2.printInfo());
 
             account1.withdraw(500);
-            account2.withdraw(3000);
+            account2.withdraw(1000);
             System.out.println(account1.printInfo());
             System.out.println(account2.printInfo());
 
         } catch (NullPointerException e) {
             System.err.println(e.getMessage());
 
-        } catch (IllegalArgumentException e) {
+        } catch (NoFundsException e){
             System.err.println(e.getMessage());
+
+        } catch (NotAllowedTransactionException e) {
+            System.err.println(e.getMessage());
+
         }
     }
 }
